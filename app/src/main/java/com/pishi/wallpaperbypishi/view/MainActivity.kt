@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
-                    PhotoSlideShow()
+                    HomeScreen()
                 }
             }
         }

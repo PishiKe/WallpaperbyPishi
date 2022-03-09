@@ -42,6 +42,22 @@ import kotlin.math.absoluteValue
 
 @Composable
 fun HomeScreen(){
+    Scaffold(
+        topBar = {
+            TopAppBar {
+                TopBar()
+            }
+        }
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            PhotoSlideShow()
+            Spacer(modifier = Modifier.padding(5.dp))
+            GridMenu()
+        }
+    }
 
 }
 
@@ -144,14 +160,12 @@ fun PhotoSlideShow(){
                             text = newPhotos.title,
                             style = MaterialTheme.typography.h5,
                             color = Color.White,
-                            fontWeight = FontWeight.Bold
                         )
 
                         Text(
                             text = newPhotos.caption,
                             style = MaterialTheme.typography.body1,
                             color = Color.White,
-                            fontWeight = FontWeight.Normal,
                             modifier = Modifier.padding(0.dp,8.dp,0.dp,0.dp)
                         )
                     }
@@ -198,27 +212,30 @@ fun GridMenu(){
                         elevation = 5.dp
                     ) {
                         Column(
-                            modifier = Modifier.padding(5.dp),
+                            modifier = Modifier
+                                .padding(5.dp)
+                                .fillMaxSize(),
                             horizontalAlignment = Alignment.CenterHorizontally,
                             verticalArrangement = Arrangement.Center
                         ) {
+                            Text(
+                                text = "Text $i",
+                                style = MaterialTheme.typography.subtitle1
+                            )
+
+                            Spacer(modifier = Modifier.padding(5.dp))
+
                             Image(
                                 painter = painterResource(id = R.drawable.bird_at_mwaani),
                                 contentDescription = "Image",
                                 contentScale = ContentScale.Crop,
                                 modifier = Modifier
-                                    .size(60.dp)
                                     .clip(RoundedCornerShape(5.dp))
                             )
 
-                            Spacer(modifier = Modifier.padding(5.dp))
 
-                            Text(
-                                text = "Text $i",
-                                color = Color.Black,
-                                fontWeight = FontWeight.Bold,
-                                fontSize = 16.sp
-                            )
+
+
                         }
                     }
                 }
@@ -231,7 +248,7 @@ fun GridMenu(){
 @Composable
 fun GridMenuPrev(){
     WallpaperByPishiTheme {
-        GridMenu()
+        HomeScreen()
     }
 }
 
